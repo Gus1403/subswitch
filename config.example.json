@@ -1,0 +1,74 @@
+{
+  "pollSeconds": 60,
+  "enforce": false,
+  "notify": true,
+  "claude": {
+    "enabled": true,
+    "thresholds": {
+      "fiveHour": 95,
+      "weekly": 95
+    },
+    "ladderPct": 99,
+    "cooldownSeconds": 300,
+    "hysteresis": 0.05,
+    "unknownTicks": 3,
+    "staleMaxSeconds": 900,
+    "harvest": {
+      "enabled": true,
+      "windowHours": 24,
+      "minWeeklyLeftPct": 40,
+      "maxFiveHourPct": 50,
+      "cooldownSeconds": 10800
+    },
+    "rideableFiveHourPct": 75,
+    "identityGuard": true
+  },
+  "codex": {
+    "enabled": true,
+    "configGuard": true,
+    "walledProcessNotify": true,
+    "homes": [
+      "~/.codex",
+      "~/.codex-2",
+      "~/.codex-3"
+    ],
+    "thresholds": {
+      "fiveHour": 95,
+      "weekly": 95
+    },
+    "ladderPct": 99,
+    "cooldownSeconds": 300,
+    "hysteresis": 0.05,
+    "unknownTicks": 3,
+    "staleMaxSeconds": 900,
+    "harvest": {
+      "enabled": true,
+      "windowHours": 24,
+      "minWeeklyLeftPct": 40,
+      "maxFiveHourPct": 50,
+      "cooldownSeconds": 10800
+    },
+    "watcher": {
+      "autoResume": true,
+      "cmux": true,
+      "debounceSeconds": 600
+    },
+    "rideableFiveHourPct": 75,
+    "deadAuthNotify": true,
+    "computerUseCanary": true,
+    "redeem": {
+      "enabled": false,
+      "starvation": true,
+      "expiryHarvest": true,
+      "reserve": 0,
+      "starvationBreachReserve": true,
+      "starvationPct": 99,
+      "harvestMinWeeklyPct": 15,
+      "expiryNotifyHours": 24,
+      "expirySafetyLeadMinutes": 60,
+      "requestMarginSeconds": 300,
+      "cooldownSeconds": 3600
+    },
+    "requireFiveHour": false
+  }
+}

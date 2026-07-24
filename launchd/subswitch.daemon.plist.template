@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Template. install.sh substitutes the double-underscore tokens below for the
+  current machine and writes the result to ~/Library/LaunchAgents/. Never commit
+  a rendered copy: it contains an absolute home directory and a username.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>__LABEL__</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>__REPO_DIR__/daemon/subswitchd.py</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>ThrottleInterval</key>
+  <integer>30</integer>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>__HOME__/.local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+    <key>USER</key>
+    <string>__USER__</string>
+    <key>HOME</key>
+    <string>__HOME__</string>
+    <key>CMUX_SOCKET_PATH</key>
+    <string>__HOME__/.local/state/cmux/cmux-__UID__.sock</string>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>__HOME__/.config/subswitch/logs/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>__HOME__/.config/subswitch/logs/launchd.err.log</string>
+</dict>
+</plist>

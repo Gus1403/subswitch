@@ -1,0 +1,12 @@
+.DS_Store
+*.log
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Never commit machine-specific or runtime state.
+launchd/*.plist
+config.json
+state.json
+codex-current
+auth.json
