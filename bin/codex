@@ -5,7 +5,7 @@
 #   * `codex logout` — the ONLY confirmed explicit refresh-token revoker.
 #   * bare `codex login` (no CODEX_HOME) — writes into whichever home the
 #     pointer currently selects, which is how the same account ends up in two
-#     homes (the condition that revoked .codex-2 on 2026-07-17).
+#     homes, the condition that permanently revokes one of them.
 # Neither is blocked: each prints the concrete risk for the RESOLVED home and
 # account, then asks for confirmation.  Non-interactive callers (agents) are
 # refused unless they opt in explicitly, so no subagent can silently revoke an
@@ -13,7 +13,31 @@
 #
 # Everything else (exec, resume, ...) passes through untouched.
 
-real_codex="/opt/homebrew/bin/codex"
+# Resolve the real Codex binary. Codex may be installed by Homebrew, npm, or
+# anywhere else on PATH, so this must not assume one location. Order:
+#   1. SUBSWITCH_REAL_CODEX  — explicit override (also how the tests inject a stub)
+#   2. the first `codex` on PATH that is not this shim (compared by inode via
+#      -ef, so a symlink to this shim can never match and cause a re-exec loop)
+#   3. the usual install prefixes, as a last resort
+resolve_real_codex() {
+  if [[ -n "${SUBSWITCH_REAL_CODEX:-}" ]]; then
+    printf '%s' "$SUBSWITCH_REAL_CODEX"
+    return
+  fi
+  local candidate
+  while IFS= read -r candidate; do
+    [[ -n "$candidate" && -x "$candidate" ]] || continue
+    [[ "$candidate" -ef "${BASH_SOURCE[0]}" ]] && continue
+    printf '%s' "$candidate"
+    return
+  done < <(type -a -P codex 2>/dev/null || :)
+  for candidate in /opt/homebrew/bin/codex /usr/local/bin/codex; do
+    [[ -x "$candidate" ]] && { printf '%s' "$candidate"; return; }
+  done
+  printf '%s' "/opt/homebrew/bin/codex"
+}
+
+real_codex="$(resolve_real_codex)"
 config_dir="${SUBSWITCH_CONFIG_HOME:-"$HOME/.config/subswitch"}"
 pointer_file="$config_dir/codex-current"
 danger_doc="$config_dir/DANGER.md"

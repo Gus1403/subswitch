@@ -147,6 +147,7 @@ tail -50 ~/.config/subswitch/logs/launchd.err.log
 - Disable one provider by setting its `enabled` field to `false`.
 - Inspect candidate eligibility in state before forcing a switch; missing `auth.json`, collector errors, and usage older than `staleMaxSeconds` are unknown and are never selected.
 - If `cswap switch` reports a lock timeout while Claude Code is refreshing credentials, leave the daemon running; it retries on the next tick.
+- The shim resolves the real Codex binary from `PATH`, skipping itself, so Homebrew and npm installs both work. Set `SUBSWITCH_REAL_CODEX=/path/to/codex` to pin it explicitly (also how the tests inject a stub).
 
 ## Computer-use headless approval
 
