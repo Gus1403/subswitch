@@ -1673,8 +1673,8 @@ def scan_dead_codex_auth(
     """Notify the moment a codex home's login is dead, with the exact fix.
 
     A revoked/invalidated token never recovers on its own, so the collector's
-    silent backoff would hide it for days (this is exactly how .codex and
-    .codex-2 sat dead unnoticed). We notify once per death and clear the marker
+    silent backoff would otherwise hide it for days, leaving a home dead and
+    unnoticed. We notify once per death and clear the marker
     when the home comes back, so a later death re-notifies. Transient
     network/timeout errors are ignored — only unambiguous auth failures fire.
     """

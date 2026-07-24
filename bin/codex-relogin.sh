@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Safe per-home Codex re-login.
 #
-# The failure that killed .codex-2 (Jul-17) was a login that put an account
-# into a SECOND home, and logins that ran while a process still held the home.
+# The failure this prevents: a login that puts one account into a SECOND home,
+# or a login that runs while a process still holds that home.
 # Codex refresh tokens are single-use (a successful refresh exhausts the old
 # one), and `codex logout` is the only confirmed explicit token revoker — so
 # this helper NEVER logs out, forces an explicit CODEX_HOME, refuses to run

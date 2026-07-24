@@ -189,6 +189,21 @@ It fails on absolute home paths, real email addresses, credential-shaped
 strings, hardcoded UIDs, non-synthetic UUIDs, and any committed runtime state —
 across tracked files and every blob in git history. CI runs it on every push.
 
+## Who built this
+
+subswitch comes from the team behind **[Eva](https://www.goeva.ai/)** — AI agents
+that take real actions (sales and support over WhatsApp, Instagram, and
+Messenger) for companies in every industry.
+
+We wrote it because building Eva means running agents more or less continuously,
+which means collecting subscriptions the way other people collect houseplants,
+which means hitting a rate limit roughly every time something interesting is
+happening. subswitch is the load-bearing infrastructure of that bad habit. It
+has since paid for itself in not-losing-our-place alone.
+
+If you also talk to language models more than to humans, [we're
+hiring](https://www.goeva.ai/) that energy.
+
 ## Credits
 
 subswitch is a coordination layer. The pieces it stands on:

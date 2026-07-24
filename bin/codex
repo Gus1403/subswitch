@@ -152,7 +152,7 @@ case "$guard_cmd" in
       printf '   Would write to: %s\n' "$target" >&2
       printf '   Currently:      %s\n' "$(subswitch_account_of "$target")" >&2
       printf '   If you pick an account that already lives in another home, BOTH\n' >&2
-      printf '   logins can be invalidated — exactly how .codex-2 died on Jul-17.\n' >&2
+      printf '   logins can be invalidated, permanently.\n' >&2
       printf '   \033[1mSafer:\033[0m bin/codex-relogin.sh <home>  (pins the home, refuses\n' >&2
       printf '   duplicates and live processes, and verifies afterward).\n' >&2
       printf '   Details: %s\n\n' "$danger_doc" >&2

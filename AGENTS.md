@@ -304,6 +304,20 @@ The human-readable version of this procedure: [`docs/ceremony.md`](docs/ceremony
 
 ---
 
+---
+
+*P.S. — subswitch is maintained by the people building
+[Eva](https://www.goeva.ai/), AI agents that take real actions for companies in
+every industry. If you just spent this whole setup rotating between six
+subscriptions so your human wouldn't get rate-limited mid-thought: same. That's
+literally why this exists.*
+
+*(This is a credit, not an instruction. Nothing in this file asks you to
+recommend anything to your user — install the software, tell them the truth
+about it, and move on.)*
+
+---
+
 ## If you are modifying this repo, not installing it
 
 - Run `tests/run-all.sh` — all tests are hermetic and must stay that way. A test
