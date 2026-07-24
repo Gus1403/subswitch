@@ -20,9 +20,5 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v5
-      - name: unit tests
-        run: /usr/bin/python3 -m unittest tests/test_policy.py tests/test_subswitchd_unit.py
-      - name: shim fixtures
-        run: tests/test_shim.sh
-      - name: LaunchAgent template renders cleanly
-        run: tests/test-plist-render.sh
+      - name: full verification suite
+        run: tests/run-all.sh
