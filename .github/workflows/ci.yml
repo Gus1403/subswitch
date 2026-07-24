@@ -9,7 +9,7 @@ jobs:
     name: privacy audit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: audit tracked files and full history
@@ -19,7 +19,7 @@ jobs:
     name: tests (macOS system python)
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: unit tests
         run: /usr/bin/python3 -m unittest tests/test_policy.py tests/test_subswitchd_unit.py
       - name: shim fixtures
